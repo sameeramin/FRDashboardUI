@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Face Recognintion</title>
+</head>
+<body class="bg-dark text-light">
+<div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card bg-dark" style="height: 100vh">
+                    <div class="card-body">
+                        <div class="card-tilte">
+                            <div class="row">
+                                <div class="col-6">
+                                    <h5>Face Recognition System (Beta)</h5>
+                                </div>
+                                <div class="col-6">
+                                    <form id="ipform" action="https://google.com" onsubmit="event.preventDefault()">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label>
+                                                    <input type="text" name="uid" id="uid" class="form-control"
+                                                           placeholder="Please Enter ID">
+                                                </label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="submit" name="submit" class="form-control">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="card-text">
+                            Video Feed Will Go Here....
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-dark" style="height: 50vh">
+                    <div class="card-body">
+                        <h5 class="card-title">Record</h5>
+                        <hr>
+                        <div class="row">
+                            <div class="col-5">ID:</div>
+                            <div class="col-7">AD0000212</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-5">Name:</div>
+                            <div class="col-7">John Doe</div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-6">
+                                <p class="card-text">Record Image</p>
+                                <img src="https://duncanlock.net/images/posts/better-figures-images-plugin-for-pelican/dummy-200x200.png"
+                                     class="img-thumbnail" alt="Record Image">
+                            </div>
+                            <div class="col-6">
+                                <p class="card-text">Current Image</p>
+                                <img src="https://duncanlock.net/images/posts/better-figures-images-plugin-for-pelican/dummy-200x200.png"
+                                     class="img-thumbnail" alt="Current Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card bg-dark" style="height: 50vh">
+                    <div class="card-body">
+                        <h5 class="card-title">History</h5>
+                        <hr>
+                        <p class="card-text">
+                            01-Jun-2021 | 12:00PM - 03:30PM<br>
+                            01-Jun-2021 | 12:00PM - 03:30PM<br>
+                            01-Jun-2021 | 12:00PM - 03:30PM<br>
+                            01-Jun-2021 | 12:00PM - 03:30PM<br>
+                            01-Jun-2021 | 12:00PM - 03:30PM<br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        $('form').on('submit', function (event) {
+            $.ajax({
+                data: {
+                    uid: $('#uid').val()
+                },
+                type: 'post',
+                url: '/form'
+            })
+            .done(function (data) {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    alert(data.status);
+                }
+                document.getElementById('ipform').reset()
+            });
+        });
+    });
+</script>
+</body>
+</html>
